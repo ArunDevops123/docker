@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  production-service:
+    build: 
+      context: ./docker/test
+      dockerfile: ubuntu20
+    ports:
+      - "222:22"
+    tty: true

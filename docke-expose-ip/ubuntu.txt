@@ -1,0 +1,10 @@
+FROM nakkumar/work:u18f-v1.0
+MAINTAINER  Arun kumar (arunkumar.nagarajan@zippyops.in)
+WORKDIR /opt/
+RUN apt-get update -y 
+COPY ubuntu-ssh.sh /opt/
+RUN chmod +x ubuntu-ssh.sh &&\
+    sh ubuntu-ssh.sh
+# ENTRYPOINT ["sh", "/ubuntu-ssh.sh"]
+ENTRYPOINT service ssh restart && bash
+EXPOSE 22
