@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  centos7:
+    image: nakkumar/work:c7f-v1.2
+    container_name: my_centos7
+    privileged: true
+    command: /usr/sbin/init
+    ports:
+      - "227:22"
+    tty: true  
+
+services:
+  centos8:
+    image: nakkumar/work:c8f-v2.0
+    container_name: my_centos8
+    privileged: true
+    command: /usr/sbin/init
+    ports:
+      - "228:22"
+    tty: true  

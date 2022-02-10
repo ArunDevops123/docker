@@ -1,0 +1,51 @@
+docker-compose
+**************
+
+docker-compose up   --> docker-compose.yml     to run this file
+
+docker-compose -f centos.yml up -d   --> to run specific centos.yml file
+
+
+
+1.)run docker-file
+****************
+dockerfile
+**********
+FROM nakkumar/work:u16f-v1.0
+MAINTAINER  Arun kumar (arunkumar.nagarajan@zippyops.in)
+WORKDIR /opt/
+RUN apt-get update -y 
+COPY ubuntu-ssh.sh /opt/
+# RUN chmod +x ubuntu-ssh.sh &&\
+#     sh ubuntu-ssh.sh
+# ENTRYPOINT ["sh", "/ubuntu-ssh.sh"]
+ENTRYPOINT service ssh restart && bash
+EXPOSE 22
+
+composefile
+************
+version: '2'
+
+services:
+  production-service:
+    build: 
+      context: ./docker/test     --> path
+      dockerfile: centos7        --> file name
+    ports:
+      - "222:22"
+    privileged: true
+    tty: true					--> run the script endless
+	
+	
+
+2.)run docker-image
+****************
+services:
+  master_ansible:
+    image: nakkumar/work:c8f-v1.2     --> img name
+    container_name: my_centos
+    privileged: true				  --> privileged mode
+    command: /usr/sbin/init
+    ports:
+      - "222:22"
+    tty: true  

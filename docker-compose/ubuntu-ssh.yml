@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  ubuntu16.04:
+    image: nakkumar/work:u16f-v1.3
+    container_name: my_ubuntu16.04
+    privileged: true
+    entrypoint: sh /opt/ssh.sh
+    ports:
+      - "2216:22" 
+    tty: true  
+
+services:
+  ubuntu18.04:
+    image: nakkumar/work:u18f-v1.3
+    container_name: my_ubuntu18.04
+    privileged: true
+    entrypoint: sh /opt/ssh.sh
+    ports:
+      - "2218:22" 
+    tty: true  
+
+services:
+  ubuntu20.04:
+    image: nakkumar/work:u20f-v1.3
+    container_name: my_ubuntu20.04
+    privileged: true
+    entrypoint: sh /opt/ssh.sh
+    ports:
+      - "2220:22" 
+    tty: true  
+
