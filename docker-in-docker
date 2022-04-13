@@ -1,0 +1,16 @@
+Docker-in-Docker
+****************
+
+ERROR
+******
+docker: Error response from daemon: error creating aufs mount to /var/lib/docker/aufs/mnt/d0d4139c79f52f31962f3659a7f92b336afcd980f33678d462fb6fc9959e453c-init: mount target=/var/lib/docker/aufs/mnt/d0d4139c79f52f31962f3659a7f92b336afcd980f33678d462fb6fc9959e453c-init data=br:/var/lib/docker/aufs/diff/d0d4139c79f52f31962f3659a7f92b336afcd980f33678d462fb6fc9959e453c-init=rw:/var/lib/docker/aufs/diff/b306d5dacba5752e42dd50333ecba5c848a382f0b4c7c6395ef9e1815494d302=ro+wh:/var/lib/docker/aufs/diff/3996505fb8fd327c811e4d30678ebfec80f80d9b5dc440f50197015cc192e154=ro+wh:/var/lib/docker/aufs/diff/06d119e869c06498d4945f9d60283fee28b3ce8593f2e57bb28e71cbf9324b7c=ro+wh:/var/lib/docker/aufs/diff/c5c5458ce5c9c3a40db509dcdc74331052756b1b8ad0855c081352eaf36b7c2d=ro+wh:/var/lib/docker/aufs/diff/7515dc05387fc91e0df56ff008c1764f88fa3a7363af5d667d674d8c5c03d823=ro+wh:/var/lib/docker/aufs/diff/e6fa9d7f9d1f6de34734c29b03134cf375abaebaab4b380da084b233bc190201=ro+wh:/var/lib/docker/aufs/diff/df7c73ed55d312fcd5704f8d3ca4db7fda2bc06aa5ce637d27c4a1f6108d737b=ro+wh,dio,xino=/dev/shm/aufs.xino: invalid argument.
+See 'docker run --help'.
+
+step1: /etc/init.d/docker stop
+
+step2: vi /etc/docker/daemon.json    --> create the file and add content
+{
+    "storage-driver": "vfs"
+}
+
+step3: /etc/init.d/docker start
